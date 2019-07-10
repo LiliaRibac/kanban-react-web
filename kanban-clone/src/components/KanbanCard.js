@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 const KanbanCard =({text}) =>{
     return(
-     <Card >  
+     <Card style ={styles.cardContainer}>  
          <CardContent > 
         <Typography  gutterBottom>
          {text}
@@ -13,6 +13,11 @@ const KanbanCard =({text}) =>{
         </CardContent>           
     </Card>
   );
-   
+}
+
+const styles ={
+    cardContainer: {
+        marginBottom:8
+    }
 }
 export default KanbanCard;
