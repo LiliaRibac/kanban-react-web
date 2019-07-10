@@ -10,14 +10,22 @@ class App extends Component{
   return (
     <div className="App">
      <h2>Hello World</h2>
-     {lists.map(list =>
+     <div style ={styles.listsContainer}>
+     {lists.map(list =>( 
   <KanbanList title ={list.title} cards ={list.cards}/>
-   )}
+   ))}
     </div>
-  );
-}
+    </div>
+   );
+  }
 }
 
+const styles ={
+  listsContainer:{
+    display: "flex",
+    flexDirection:"row"
+  }
+}
 const mapStateToProps = state =>({
   lists: state.lists
 })

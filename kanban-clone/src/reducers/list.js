@@ -1,6 +1,6 @@
 const initialState =[
     {
-        title: "Last Episode",
+        title: "First list",
         id:0,
         cards:[
             {
@@ -10,6 +10,24 @@ const initialState =[
             {
                 id:1,
                 text:"doing"
+            }
+        ]
+    },
+    {
+        title: " Second list ",
+        id:0,
+        cards:[
+            {
+                id:0,
+                text:"todo1"
+            },
+            {
+                id:1,
+                text:"doing1"
+            },
+            {
+                id:2,
+                text:"done"
             }
         ]
     }
