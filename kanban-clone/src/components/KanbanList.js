@@ -1,5 +1,6 @@
 import React from "react";
-import KanbanCard from "./KanbanCard"
+import KanbanCard from "./KanbanCard";
+import KanbanActionButton from "./KanbanActionButton"
 
 
 
@@ -8,18 +9,21 @@ const KanbanList = ({title ,cards}) =>{
     <div style={styles.container}> 
         <h4>{title}</h4>
        {cards.map(card =>(
-            <KanbanCard text = {card.text} />
+            <KanbanCard key={card.id} text = {card.text} />
             ))} 
+    <KanbanActionButton />
+
     </div>
     )
 }
 
 const styles ={
     container:{
-backgroundColor :"#ccc",
+backgroundColor :"#dfe3e6",
 borderRadius:3,
 width:200, 
 padding:8,
+marginRight:8
 // marginLeft:46
     }
 }

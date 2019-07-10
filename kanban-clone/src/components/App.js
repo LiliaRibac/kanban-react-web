@@ -12,7 +12,7 @@ class App extends Component{
      <h2>Hello World</h2>
      <div style ={styles.listsContainer}>
      {lists.map(list =>( 
-  <KanbanList title ={list.title} cards ={list.cards}/>
+  <KanbanList key={list.id} title ={list.title} cards ={list.cards}/>
    ))}
     </div>
     </div>
