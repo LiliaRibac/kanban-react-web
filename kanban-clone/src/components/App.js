@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import KanbanList from "./KanbanList";
-import {connect} from "react-redux"
-//import { listenerCount } from 'cluster';
+import {connect} from "react-redux";
+import KanbanActionButton from "./KanbanActionButton"
 
 
 class App extends Component{
   render (){ 
     const {lists} = this.props;
   return (
-    <div className="App">
+    <div >
      <h2>Hello World</h2>
      <div style ={styles.listsContainer}>
      {lists.map(list =>( 
   <KanbanList key={list.id} title ={list.title} cards ={list.cards}/>
    ))}
+   <KanbanActionButton list/>
     </div>
     </div>
    );

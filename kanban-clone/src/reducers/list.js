@@ -1,3 +1,7 @@
+import {CONSTANTS} from "../actions"
+
+let listID =2
+
 const initialState =[
     {
         title: "First list",
@@ -26,7 +30,7 @@ const initialState =[
                 text:"doing1"
             },
             {
-                id:2,
+                id:3,
                 text:"done"
             }
         ]
@@ -35,7 +39,17 @@ const initialState =[
 
 const list = (state = initialState, action) =>{
     switch (action.type){
+        case CONSTANTS.ADD_LIST:
+            const newList ={
+                title:action.payload,
+                card:[],
+                id:listID
+
+            }
+            listID +=1;
+            return [...state,newList];
         default:
+
             return state;
     }
 }

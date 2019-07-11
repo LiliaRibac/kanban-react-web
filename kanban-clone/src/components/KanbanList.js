@@ -1,6 +1,7 @@
 import React from "react";
 import KanbanCard from "./KanbanCard";
 import KanbanActionButton from "./KanbanActionButton"
+import { height } from "@material-ui/system";
 
 
 
@@ -24,8 +25,8 @@ backgroundColor :"#dfe3e6",
 borderRadius:3,
 width:200, 
 padding:8,
-marginRight:8
-// marginLeft:46
+marginRight:8,
+height:"100%"
     }
 }
 export default KanbanList;

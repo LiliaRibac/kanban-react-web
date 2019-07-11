@@ -2,6 +2,9 @@ import React from "react";
 import Icon from '@material-ui/core/Icon';
 import Textarea from 'react-textarea-autosize';
 import Card from '@material-ui/core/Card';
+import  Button  from "@material-ui/core/Button";
+import {connect} from "react-redux";
+import {addList} from "../actions"
 
 class KanbanActionButton extends React.Component{
 
@@ -26,13 +29,23 @@ this.setState ({
 })
  }
 
+handleAddList =() => {
+  const {dispatch} = this.props;
+  const {text} = this.state;
+  if (text){
+      dispatch(addList(text));
+  } 
+  return
+}
+
+
 renderAddButton = () =>{
     const {list} = this.props;
 
     const buttonText = list ? "Add another list" : "Add another card";
     const btnTextOpacity = list ? 1 : 0.5;
-    const btnTextColor = list ? "white" : "inherit";
-    const btnTextBackground = list ? "rgba  (0,0,0,.15)" :"inherit";
+    const btnTextColor = list ? "black" : "inherit";
+    const btnTextBackground = list ? "rgba(0,0,0,.15)" :"inherit";
 
     return (
         <div 
@@ -44,7 +57,7 @@ renderAddButton = () =>{
             backgroundColor:btnTextBackground
         }}>
             <Icon>add</Icon>
-           
+           <p>{buttonText}</p>
         </div>
     )
     }
@@ -65,7 +78,8 @@ renderAddButton = () =>{
                 padding:"6px 8px 2px"
             }}
             >
-                <Textarea placeholder ={placeholder} autoFocus
+                <Textarea placeholder ={placeholder} 
+                autoFocus
                 onBlur ={this.closeForm}
                 value={this.state.text}
                 onChange = {this.handleInputChange}
@@ -74,10 +88,21 @@ renderAddButton = () =>{
                     width: "100%",
                     outline:"none",
                     border:"none",
-                    overflow:"hidden",
+                    overflow:"hidden"
                 }}
                 />
             </Card>
+
+                <div style={styles.formBtn}> 
+                    <Button
+                    onMouseDown ={this.handle}
+                    variant ="contained"
+                    style ={{color:"white", backgroundColor:"#5aac44"}}
+                    >
+                        {btnTitle}{""}
+                   </Button>
+                    <Icon style ={{marginLeft:8, cursor:"pointer"}}>close</Icon>
+                </div>
         </div>
         )}
 
@@ -93,9 +118,16 @@ const styles ={
         cursor:"pointer",
         borderRadius:3,
         height:35,
-        width:270,
+        width:200,
         paddingLeft:10
-    }
+    },
+formBtn: {
+    marginTop:8,
+    display:"flex",
+    alignItems:"center"
+    
 }
 
-export default KanbanActionButton;
+}
+
+export default  connect() (KanbanActionButton);
