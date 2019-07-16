@@ -2,16 +2,24 @@ import React from "react";
 import KanbanCard from "./KanbanCard";
 import KanbanActionButton from "./KanbanActionButton"
 import {Droppable} from "react-beautiful-dnd";
+import styled from "styled-components";
 
 
 
-
-const KanbanList = ({title ,cards, listID}) =>{
+const ListContainer= styled.div `
+background-color :#dfe3e6;
+border-radius:3px;
+width:200px; 
+padding:8px;
+margin-right:8px;
+height:100%;
+`
+const KanbanList = ({title,cards, listID}) =>{
     console.log(cards)
     return (
         <Droppable droppableId={String(listID)}>
     {(provided)=>(
-        <div {...provided.droppableProps} ref={provided.innerRef} style={styles.container}> 
+        <ListContainer {...provided.droppableProps} ref={provided.innerRef} > 
         <h4>{title}</h4>
        {cards.map((card , index) =>(
             <KanbanCard 
@@ -23,20 +31,10 @@ const KanbanList = ({title ,cards, listID}) =>{
     <KanbanActionButton listID={listID}  />  
     {provided.placeholder}
 
-    </div>
+    </ListContainer>
     )}
     </Droppable>
     )
 }
 
-const styles ={
-    container:{
-backgroundColor :"#dfe3e6",
-borderRadius:3,
-width:200, 
-padding:8,
-marginRight:8,
-height:"100%"
-    }
-}
 export default KanbanList;
