@@ -1,19 +1,20 @@
 import React from "react";
 import KanbanCard from "./KanbanCard";
 import KanbanActionButton from "./KanbanActionButton"
-import { height } from "@material-ui/system";
+//import { height } from "@material-ui/system";
 
 
 
 
-const KanbanList = ({title ,cards}) =>{
+const KanbanList = ({title ,cards, listID}) =>{
+    console.log(cards)
     return (
     <div style={styles.container}> 
         <h4>{title}</h4>
        {cards.map(card =>(
             <KanbanCard key={card.id} text = {card.text} />
             ))} 
-    <KanbanActionButton />
+    <KanbanActionButton listID={listID}  />    
 
     </div>
     )
