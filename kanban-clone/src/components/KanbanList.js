@@ -1,7 +1,7 @@
 import React from "react";
 import KanbanCard from "./KanbanCard";
 import KanbanActionButton from "./KanbanActionButton"
-//import { height } from "@material-ui/system";
+import {Droppable} from "react-beautiful-dnd";
 
 
 
@@ -9,14 +9,23 @@ import KanbanActionButton from "./KanbanActionButton"
 const KanbanList = ({title ,cards, listID}) =>{
     console.log(cards)
     return (
-    <div style={styles.container}> 
+        <Droppable droppableId={String(listID)}>
+    {(provided)=>(
+        <div {...provided.droppableProps} ref={provided.innerRef} style={styles.container}> 
         <h4>{title}</h4>
-       {cards.map(card =>(
-            <KanbanCard key={card.id} text = {card.text} />
+       {cards.map((card , index) =>(
+            <KanbanCard 
+            key={card.id} 
+            index={index}
+             text = {card.text} 
+             id ={card.id} />
             ))} 
-    <KanbanActionButton listID={listID}  />    
+    <KanbanActionButton listID={listID}  />  
+    {provided.placeholder}
 
     </div>
+    )}
+    </Droppable>
     )
 }
 

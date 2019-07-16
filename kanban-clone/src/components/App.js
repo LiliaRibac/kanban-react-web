@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import KanbanList from "./KanbanList";
 import {connect} from "react-redux";
-import KanbanActionButton from "./KanbanActionButton"
+import KanbanActionButton from "./KanbanActionButton";
+import {DragDropContext} from "react-beautiful-dnd";
 
 
 class App extends Component{
+  onDragEnd =()=> {
+    //ToDO :reordering logic 
+  }
   render (){ 
     const {lists} = this.props;
   return (
+    <DragDropContext onDragEnd={this.onDragEndnpm }>
     <div >
      <h2>Hello World</h2>
      <div style ={styles.listsContainer}>
@@ -17,6 +22,7 @@ class App extends Component{
    <KanbanActionButton list/>
     </div>
     </div>
+    </DragDropContext>
    );
   }
 }
