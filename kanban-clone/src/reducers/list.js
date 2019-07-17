@@ -82,9 +82,17 @@ const list = (state = initialState, action) =>{
                         droppableIdEnd,                 
                         droppableIndexEnd,
                         droppableIndexStart,
-                        draggableId
+                        draggableId,
+                        type
                     }= action.payload;
                     const newState = [...state];
+
+                    // dargging list around
+                    if(type ==="list") {
+                        const list = newState.splice(droppableIndexStart, 1);
+                        newState.splice(droppableIndexEnd, 0, ...list);
+                        return newState
+                    }
                     //in the same list
                     if (droppableIdStart === droppableIdEnd) {
                        
