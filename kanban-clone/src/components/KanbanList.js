@@ -19,7 +19,7 @@ const KanbanList = ({title,cards, listID, index}) =>{
     return (
         <Draggable draggableId = {String(listID)} index={index}>
             {provided => (
-                <ListContainer {...provided.droppableProps} 
+                <ListContainer {...provided.draggableProps} 
                 ref={provided.innerRef} 
                 {...provided.dragHandleProps}>  
                 <Droppable droppableId={String(listID)}>
