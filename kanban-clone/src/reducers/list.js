@@ -62,6 +62,7 @@ const list = (state = initialState, action) =>{
                     id:`card-${cardID}`
                 }
                 cardID +=1;
+
                const newState= state.map(list => {
                    if(list.id === action.payload.listID) {
                     return {
@@ -88,8 +89,23 @@ const list = (state = initialState, action) =>{
                     if (droppableIdStart === droppableIdEnd) {
                        
                         const list = state.find(list =>droppableIdStart=== list.id)
-                        const card =list.cards.splice(droppableIndexStart,1)
+                        const card =list.cards.splice(droppableIndexStart, 1)
                         list.cards.splice(droppableIndexEnd, 0, ...card)
+
+                    }
+
+                    //other list
+                    if(droppableIdStart !==droppableIdEnd){
+                        //find the list where drag happened
+                        const listStart = state.find(list => droppableIdStart ===list.id)
+
+                        //pull out the card from this list
+                        const card = listStart.cards.splice(droppableIndexStart, 1);
+
+                        //find the list where drag ended
+                        const listEnd = state.find(list =>droppableIdEnd ===list.id);
+
+                        listEnd.cards.splice(droppableIndexEnd, 0, ...card)
 
                     }
                     return newState;
